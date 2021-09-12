@@ -5,7 +5,6 @@
 #include "framework/component.h"
 #include "framework/system.h"
 #include "framework/systems/script_system.h"
-#include "script/script.h"
 #include "resource_loader.h"
 
 Entity::Entity(Scene* scene)
@@ -15,9 +14,6 @@ Entity::Entity(Scene* scene)
 
 Entity::~Entity()
 {
-	ScriptSystem::GetSingleton()->removeInitScriptEntity(this);
-	ScriptSystem::GetSingleton()->removeEnterScriptEntity(this);
-
 	destroy();
 }
 
@@ -29,15 +25,6 @@ JSON::json Entity::getJSON() const
 	{
 		j["components"][component->getName()] = component->getJSON();
 	}
-	if (m_Script)
-	{
-		j["script"] = m_Script->getJSON();
-	}
-	else
-	{
-		j["script"] = {};
-	}
-
 	return j;
 }
 
@@ -60,15 +47,6 @@ bool Entity::onAllEntitiesAdded()
 		status = status && component.second->setupEntities();
 	}
 
-	if (m_Script)
-	{
-		bool result = m_Script->setup(this);
-		if (!result)
-		{
-			m_Script.reset();
-			result = status;
-		}
-	}
 	return status;
 }
 
@@ -143,71 +121,13 @@ const HashMap<ComponentID, Component*>& Entity::getAllComponents() const
 
 void Entity::bind(const Event::Type& event, const sol::function& function)
 {
-	m_Binder.bind(event, [this, function](const Event* e) -> Variant { return function.call<Variant>(m_Script->getScriptInstance(), this, e); });
+	m_Binder.bind(event, [this, function](const Event* e) -> Variant { return function.call<Variant>(); });
 }
 
 bool Entity::call(const String& function, const Vector<Variant>& args)
 {
 	bool status = false;
-	if (m_Script)
-	{
-		status = m_Script->call(function, args);
-		if (!status)
-		{
-			WARN("Script error in " + m_Script->getFilePath() + " on " + getFullName() + " during " + function);
-		}
-	}
 	return status;
-}
-
-void Entity::evaluateScriptOverrides()
-{
-	if (m_Script)
-	{
-		m_Script->evaluateOverrides();
-	}
-};
-
-bool Entity::setScriptJSON(const JSON::json& script)
-{
-	if (script.contains("path"))
-	{
-		if (OS::IsExists(script["path"]))
-		{
-			m_Script.reset(new Script(script));
-			ScriptSystem::GetSingleton()->addInitScriptEntity(this);
-			return true;
-		}
-		else
-		{
-			ERR("Could not find script file: " + (String)script["path"]);
-			return false;
-		}
-	}
-	return false;
-}
-
-bool Entity::setScript(const String& path)
-{
-	if (path.empty())
-	{
-		m_Script.reset();
-		return true;
-	}
-	if (OS::IsExists(path))
-	{
-		JSON::json j;
-		j["path"] = path;
-		j["overrides"] = {};
-		m_Script.reset(new Script(j));
-		ScriptSystem::GetSingleton()->addInitScriptEntity(this);
-		return m_Script->setup(this);
-	}
-	else
-	{
-		WARN("Could not find script file: " + path);
-		return false;
-	}
 }
 
 const String& Entity::getName() const
@@ -227,46 +147,4 @@ const String& Entity::getFullName() const
 
 void Entity::draw()
 {
-	ImGui::Text("Script");
-	if (m_Script)
-	{
-		if (ImGui::Selectable(m_Script->getFilePath().c_str()))
-		{
-			EventManager::GetSingleton()->call(EditorEvents::EditorOpenFile, VariantVector { m_Script->getFilePath(), (int)ResourceFile::Type::Text });
-		}
-		if (ImGui::Button(ICON_ROOTEX_EXTERNAL_LINK "##Open Script"))
-		{
-			EventManager::GetSingleton()->call(EditorEvents::EditorOpenFile, VariantVector { m_Script->getFilePath(), (int)ResourceFile::Type::Text });
-		}
-		ImGui::SameLine();
-		if (ImGui::Button(ICON_ROOTEX_PENCIL_SQUARE_O "##Edit Script"))
-		{
-			EventManager::GetSingleton()->call(EditorEvents::EditorEditFile, m_Script->getFilePath());
-		}
-		ImGui::SameLine();
-		if (ImGui::Button(ICON_ROOTEX_REFRESH "##Reload"))
-		{
-			JSON::json& j = m_Script->getJSON();
-			m_Script.reset(new Script(j));
-			m_Script->setup(this);
-		}
-		ImGui::SameLine();
-		if (ImGui::Button(ICON_ROOTEX_WINDOW_CLOSE "##RemoveScript"))
-		{
-			m_Script.reset();
-		}
-
-		m_Script->draw();
-	}
-	else
-	{
-		ImGui::SameLine();
-		if (ImGui::Button(ICON_ROOTEX_FOLDER_OPEN "##Choose Script"))
-		{
-			if (Optional<String> result = OS::SelectFile(SupportedFiles.at(ResourceFile::Type::Lua), "game/assets/scripts/"))
-			{
-				setScript(*result);
-			}
-		}
-	}
 }

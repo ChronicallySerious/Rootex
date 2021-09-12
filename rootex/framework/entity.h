@@ -6,12 +6,11 @@
 
 class Component;
 class Scene;
-class Script;
 
 typedef unsigned int ComponentID;
 typedef unsigned int SceneID;
 
-/// A collection of ECS style components that define an ECS style entity.
+/// A collection of ECS style components that defines an ECS style entity.
 class Entity
 {
 	EventBinder<Entity> m_Binder;
@@ -19,7 +18,6 @@ class Entity
 protected:
 	Scene* m_Scene;
 	HashMap<ComponentID, Component*> m_Components;
-	Ref<Script> m_Script;
 
 public:
 	Entity(Scene* scene);
@@ -59,10 +57,6 @@ public:
 
 	void bind(const Event::Type& event, const sol::function& function);
 	bool call(const String& function, const Vector<Variant>& args);
-	void evaluateScriptOverrides();
-	bool setScript(const String& path);
-	bool setScriptJSON(const JSON::json& script);
-	Script* getScript() const { return m_Script.get(); }
 
 	void draw();
 };

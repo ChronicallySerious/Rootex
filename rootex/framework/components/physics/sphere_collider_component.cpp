@@ -26,7 +26,7 @@ SphereColliderComponent::SphereColliderComponent(Entity& owner, const JSON::json
 
 JSON::json SphereColliderComponent::getJSON() const
 {
-	JSON::json& j = RigidBodyComponent::getJSON();
+	JSON::json j = RigidBodyComponent::getJSON();
 
 	j["radius"] = m_Radius;
 

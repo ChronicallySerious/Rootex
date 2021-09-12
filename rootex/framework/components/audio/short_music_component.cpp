@@ -35,7 +35,7 @@ bool ShortMusicComponent::setupData()
 
 JSON::json ShortMusicComponent::getJSON() const
 {
-	JSON::json& j = AudioComponent::getJSON();
+	JSON::json j = AudioComponent::getJSON();
 
 	j["audio"] = m_AudioFile->getPath().generic_string();
 	j["playOnStart"] = m_IsPlayOnStart;

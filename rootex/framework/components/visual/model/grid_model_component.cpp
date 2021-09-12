@@ -110,7 +110,7 @@ void GridModelComponent::render(float viewDistance)
 
 JSON::json GridModelComponent::getJSON() const
 {
-	JSON::json& j = ModelComponent::getJSON();
+	JSON::json j = ModelComponent::getJSON();
 
 	j["cellSize"] = m_CellSize;
 	j["cellCount"] = m_CellCount;

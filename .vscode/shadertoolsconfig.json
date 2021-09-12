@@ -1,0 +1,11 @@
+{
+	"root": true,
+	"hlsl.additionalIncludeDirectories": [
+		"${workspaceFolder}/",
+		"${workspaceFolder}/rootex/core/renderer/shaders/",
+		"${workspaceFolder}/game/assets/shaders/",
+		"../",
+		"../game/assets/shaders/",
+		"../rootex/core/renderer/shaders/"
+	]
+}

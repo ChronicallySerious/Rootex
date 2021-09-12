@@ -1,0 +1,30 @@
+{
+  "telemetry.enableTelemetry": false,
+  "C_Cpp.enhancedColorization": "Enabled",
+  "files.associations": {
+    "*.rml": "html",
+    "*.rcss": "css",
+    "*.ink": "ink",
+    "*.rmat": "json",
+    "bitset": "cpp",
+    "memory": "cpp",
+    "filesystem": "cpp",
+    "initializer_list": "cpp",
+    "valarray": "cpp",
+    "xhash": "cpp",
+    "xutility": "cpp",
+    "execution": "cpp",
+    "sstream": "cpp",
+    "functional": "cpp",
+    "regex": "cpp",
+    "xlocinfo": "cpp",
+    "array": "cpp",
+    "deque": "cpp",
+    "forward_list": "cpp",
+    "list": "cpp",
+    "vector": "cpp",
+    "xstring": "cpp",
+    "xtree": "cpp"
+  },
+  "editor.formatOnSave": true
+}

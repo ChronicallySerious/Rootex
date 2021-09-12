@@ -325,7 +325,6 @@ void LuaInterpreter::registerTypes()
 		    "capsuleCollider", sol::property(&Entity::getComponent<CapsuleColliderComponent>),
 		    "staticMeshCollider", sol::property(&Entity::getComponent<StaticMeshColliderComponent>),
 		    "trigger", sol::property(&Entity::getComponent<TriggerComponent>),
-		    "script", sol::property(&Entity::getScript),
 		    "scene", sol::property(&Entity::getScene));
 		entity["addComponent"] = &Entity::addComponent;
 		entity["addDefaultComponent"] = &Entity::addDefaultComponent;
@@ -334,7 +333,6 @@ void LuaInterpreter::registerTypes()
 		entity["hasComponent"] = &Entity::hasComponent;
 		entity["getScene"] = &Entity::getScene;
 		entity["getName"] = &Entity::getName;
-		entity["setScript"] = &Entity::setScript;
 		entity["bind"] = &Entity::bind;
 	}
 	{

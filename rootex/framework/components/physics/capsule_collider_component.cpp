@@ -47,7 +47,7 @@ void CapsuleColliderComponent::setRadius(float r)
 
 JSON::json CapsuleColliderComponent::getJSON() const
 {
-	JSON::json& j = RigidBodyComponent::getJSON();
+	JSON::json j = RigidBodyComponent::getJSON();
 
 	j["radius"] = m_Radius;
 	j["sideHeight"] = m_SideHeight;

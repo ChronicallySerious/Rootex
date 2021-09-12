@@ -67,7 +67,6 @@ void ScriptSystem::update(float deltaMilliseconds)
 	{
 		if (entity)
 		{
-			entity->evaluateScriptOverrides();
 			entity->call("begin", { entity });
 		}
 	}

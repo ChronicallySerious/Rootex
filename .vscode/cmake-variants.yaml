@@ -1,0 +1,27 @@
+buildType:
+  default: Debug
+  choices:
+    Debug:
+      short: Debug
+      long: Build with debug info
+      buildType: Debug
+    Release:
+      short: Release
+      long: Speed optimized release build without debug info
+      buildType: Release
+    RelWithDebInfo:
+      short: RelWithDebInfo
+      long: Speed optimized release build with debug info
+      buildType: RelWithDebInfo
+    MinSizeRel:
+      short: MinSizeRel
+      long: Space and speed optimized release build without debug info
+      buildType: MinSizeRel
+    DebugProfile:
+      short: DebugProfile
+      long: Debug build with Tracy profiler
+      buildType: DebugProfile
+    ReleaseProfile:
+      short: ReleaseProfile
+      long: Release build with Tracy profiler
+      buildType: ReleaseProfile

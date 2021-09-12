@@ -46,8 +46,6 @@ void ECSFactory::FillEntity(Entity& entity, const JSON::json& entityJSON)
 		componentJSON = entityJSON["components"];
 	}
 
-	entity.setScriptJSON(entityJSON.value("script", JSON::json::object()));
-
 	for (auto&& [componentName, componentDescription] : componentJSON.items())
 	{
 		if (!s_ComponentSets[componentName]->addComponent(entity, componentDescription, false))

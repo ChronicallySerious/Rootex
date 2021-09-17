@@ -7,7 +7,6 @@
 #include "rootex/framework/systems/render_system.h"
 #include "rootex/framework/systems/render_ui_system.h"
 #include "rootex/framework/systems/ui_system.h"
-#include "rootex/framework/systems/script_system.h"
 #include "rootex/framework/systems/physics_system.h"
 #include "rootex/framework/systems/audio_system.h"
 #include "rootex/framework/systems/input_system.h"
@@ -61,7 +60,6 @@ void EditorApplication::setGameMode(bool enabled)
 {
 	PhysicsSystem::GetSingleton()->setActive(enabled);
 	AudioSystem::GetSingleton()->setActive(enabled);
-	ScriptSystem::GetSingleton()->setActive(enabled);
 	PlayerSystem::GetSingleton()->setActive(enabled);
 	RenderSystem::GetSingleton()->setIsEditorRenderPass(!enabled);
 	InputSystem::GetSingleton()->flushSchemes();

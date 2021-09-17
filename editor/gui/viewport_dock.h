@@ -1,6 +1,5 @@
 #pragma once
 
-#include "script/interpreter.h"
 #include "scene.h"
 
 #include "vendor/ImGUI/imgui.h"

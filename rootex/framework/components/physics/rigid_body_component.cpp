@@ -3,7 +3,6 @@
 #include "common/types.h"
 
 #include "framework/systems/physics_system.h"
-#include "script/script.h"
 
 #include "entity.h"
 

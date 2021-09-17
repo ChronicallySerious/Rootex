@@ -26,5 +26,11 @@
     "xstring": "cpp",
     "xtree": "cpp"
   },
-  "editor.formatOnSave": true
+  "editor.formatOnSave": true,
+  "C_Cpp.clang_format_path": "C:\\Program Files\\LLVM\bin\\clang-format.exe",
+  "C_Cpp.errorSquiggles": "Enabled",
+  "editor.formatOnType": true,
+  "editor.formatOnPaste": true,
+  "editor.formatOnSaveMode": "modifications",
+  "editor.defaultFormatter": "xaver.clang-format"
 }

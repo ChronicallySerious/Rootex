@@ -8,7 +8,6 @@
 #include "framework/scene_loader.h"
 #include "framework/systems/render_system.h"
 #include "framework/systems/render_ui_system.h"
-#include "framework/systems/script_system.h"
 #include "framework/systems/ui_system.h"
 #include "framework/systems/physics_system.h"
 #include "editor_application.h"
@@ -550,65 +549,6 @@ void EditorSystem::drawDefaultUI(float deltaMilliseconds)
 				ImGui::OpenPopup(m_MenuAction.c_str());
 			}
 
-			ImGui::SetNextWindowSize({ ImGui::GetContentRegionMax().x / 2, ImGui::GetContentRegionMax().y / 2 });
-			if (ImGui::BeginPopupModal("Lua API Documentation", nullptr, ImGuiWindowFlags_AlwaysAutoResize))
-			{
-				static String searchingString;
-				ImGui::InputText("Search", &searchingString, ImGuiInputTextFlags_EnterReturnsTrue | ImGuiInputTextFlags_AlwaysInsertMode | ImGuiInputTextFlags_CallbackHistory);
-				ImGui::SameLine();
-				if (ImGui::Button("Close"))
-				{
-					ImGui::CloseCurrentPopup();
-					m_MenuAction = "";
-				}
-
-				static String openedLuaClass;
-				if (ImGui::ListBoxHeader("##Lua Classes", { 0, ImGui::GetContentRegionAvail().y }))
-				{
-					for (const auto& [key, value] : LuaInterpreter::GetSingleton()->getLuaState().registry())
-					{
-						if (key.is<String>())
-						{
-							sol::object luaClass = value;
-							String typeName = key.as<String>();
-
-							bool shouldMatch = false;
-							for (int i = 0; i < typeName.size(); i++)
-							{
-								shouldMatch |= typeName.compare(i, searchingString.size(), searchingString) == 0;
-							}
-
-							if (searchingString.empty() || shouldMatch)
-							{
-								if (ImGui::MenuItem(typeName.c_str()))
-								{
-									openedLuaClass = typeName;
-								}
-							}
-						}
-					}
-					ImGui::ListBoxFooter();
-				}
-				ImGui::SameLine();
-				if (ImGui::ListBoxHeader("##Class Description", ImGui::GetContentRegionAvail()))
-				{
-					if (!openedLuaClass.empty())
-					{
-						sol::object luaClass = LuaInterpreter::GetSingleton()->getLuaState().registry()[openedLuaClass];
-
-						EditorSystem::GetSingleton()->pushBoldFont();
-						ImGui::Text("%s", openedLuaClass.c_str());
-						EditorSystem::GetSingleton()->popFont();
-
-						ImGui::SetNextItemOpen(true);
-						showDocumentation(openedLuaClass, luaClass);
-					}
-					ImGui::ListBoxFooter();
-				}
-
-				ImGui::EndPopup();
-			}
-
 			if (ImGui::BeginPopupModal("Save", 0, ImGuiWindowFlags_AlwaysAutoResize))
 			{
 				ImGui::SetNextWindowSize({ ImGui::GetWindowWidth(), ImGui::GetWindowHeight() });
@@ -736,7 +676,7 @@ void EditorSystem::drawDefaultUI(float deltaMilliseconds)
 		{
 			EventManager::GetSingleton()->call(EditorEvents::EditorSceneIsClosing);
 			SceneLoader::GetSingleton()->loadPreloadedScene(loadingScene, {});
-			SetWindowText(GetActiveWindow(), ("Rootex Editor: " + loadingScene).c_str());
+			SetWindowTextA(GetActiveWindow(), ("Rootex Editor: " + loadingScene).c_str());
 			loadingSceneTotalProgress = -1;
 			loadingSceneProgress = 0;
 			loadingScene = "";
@@ -778,65 +718,6 @@ void EditorSystem::drawDefaultUI(float deltaMilliseconds)
 	}
 
 	ImGui::End();
-}
-
-static HashMap<int, String> LuaTypeNames = {
-	{ LUA_TNONE, "none" },
-	{ LUA_TNIL, "lua_nil" },
-	{ LUA_TSTRING, "string" },
-	{ LUA_TNUMBER, "number" },
-	{ LUA_TTHREAD, "thread" },
-	{ LUA_TBOOLEAN, "boolean" },
-	{ LUA_TFUNCTION, "function" },
-	{ LUA_TUSERDATA, "userdata" },
-	{ LUA_TLIGHTUSERDATA, "lightuserdata" },
-	{ LUA_TTABLE, "table" },
-	{ -0xFFFF, "poly" }
-};
-
-void EditorSystem::showDocumentation(const String& name, const sol::table& table)
-{
-	if (ImGui::TreeNodeEx(name.c_str(), ImGuiTreeNodeFlags_CollapsingHeader))
-	{
-		ImGui::Indent();
-		for (auto [key, value] : table)
-		{
-			if (key.is<String>() && key.as<String>() != name && key.as<String>() != "class_check" && key.as<String>() != "class_cast")
-			{
-				if (value.is<sol::table>())
-				{
-					showDocumentation(name + "." + key.as<String>(), value.as<sol::table>());
-				}
-				else
-				{
-					String tag = LuaTypeNames[(int)value.get_type()];
-					String prefix = name;
-					String suffix;
-					if (value.is<sol::function>())
-					{
-						suffix = "()";
-					}
-					else if (value.is<String>())
-					{
-						suffix = " = " + value.as<String>();
-					}
-
-					pushItalicFont();
-					ImGui::TextColored(getSuccessColor(), "%s", tag.c_str());
-					ImGui::SameLine();
-					ImGui::TextColored(getWarningColor(), "%s", prefix.c_str());
-					popFont();
-
-					ImGui::SameLine();
-
-					pushBoldFont();
-					ImGui::MenuItem((" . " + key.as<String>() + suffix).c_str());
-					popFont();
-				}
-			}
-		}
-		ImGui::Unindent();
-	}
 }
 
 Variant EditorSystem::saveAll(const Event* event)

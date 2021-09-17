@@ -973,41 +973,6 @@ subject to the following restrictions:
 
 Compiled and linked as is. Build step modified. Source weeded and restructred. Also removed the Extras folder and examples folder.
 
-## Debugger
-
-### Code
-
-https://github.com/slembcke/debugger.lua
-
-### License
-
-<details>
-<summary>Claimed as MIT License</summary>
-Copyright (c) 2020 Scott Lembcke and Howling Moon Software
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in
-all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-</details>
-
-### Remarks
-
-Source weeded and restructured. However, this library code is not linked into Rootex because it is a Lua library, thus we need the Lua source code to be available in text format to be able to run it inside Rootex. The source is copied into Rootex game exports.
-
 ## DirectXTK
 
 ### Code
@@ -1519,42 +1484,6 @@ SOFTWARE.
 
 Compiled and linked as is. Build process modified. Source weeded and restructured. Only the DirectX 11 runtime was kept from the bundle of all the possible runtimes that Effekseer supports.
 
-## Flux (flux)
-
-### Code
-
-https://github.com/rxi/flux/commit/bb330231b87eabf84fbd68322f13a6320db30a41
-
-### License
-
-<details>
-<summary>MIT License</summary>
-Copyright (c) 2016 rxi
-
-
-Permission is hereby granted, free of charge, to any person obtaining a copy of
-this software and associated documentation files (the "Software"), to deal in
-the Software without restriction, including without limitation the rights to
-use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies
-of the Software, and to permit persons to whom the Software is furnished to do
-so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-</details>
-
-### Remarks
-
-This library code is not linked into Rootex because it is a Lua library, thus we need the Lua source code to be available in text format to be able to run it inside Rootex. The source is copied into Rootex game exports.
-
 ## FreeType
 
 ### Code
@@ -1965,51 +1894,6 @@ SOFTWARE.
 
 Compiled and linked as is. Build process modified. Source weeded and restructured. This is a header only library so there's almost no symbols in the isolated library compiled binary.
 
-## LPeg
-
-### Code
-
-http://www.inf.puc-rio.br/~roberto/lpeg/#download
-
-### License
-
-<details>
-<summary>LPeg License</summary>
-Copyright © 2007-2019 Lua.org, PUC-Rio.
-
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-</details>
-
-### Remarks
-
-Build Process modified. Source weeded and restructured. Compiled and linked as is.
-
-## Lua
-
-### Code
-
-Lua 5.3 from http://www.lua.org/ftp/
-
-### License
-
-<details>
-<summary>Lua License</summary>
-Copyright © 1994–2019 Lua.org, PUC-Rio.
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-</details>
-
-### Remarks
-
-Build Process modified. Source weeded and restructured. Compiled and linked as is.
-
 ## Meshoptimizer
 
 ### Code
@@ -2144,81 +2028,6 @@ SOFTWARE.
 ### Remarks
 
 Build Process modified. Compiled and linked as is.
-
-## Middleclass
-
-### Code
-
-https://github.com/kikito/middleclass
-
-### License
-
-<details>
-<summary>MIT License</summary>
-MIT LICENSE
-
-Copyright (c) 2011 Enrique GarcĂ­a Cota
-
-Permission is hereby granted, free of charge, to any person obtaining a
-copy of this software and associated documentation files (the
-"Software"), to deal in the Software without restriction, including
-without limitation the rights to use, copy, modify, merge, publish,
-distribute, sublicense, and/or sell copies of the Software, and to
-permit persons to whom the Software is furnished to do so, subject to
-the following conditions:
-
-The above copyright notice and this permission notice shall be included
-in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
-OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT.
-IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY
-CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
-TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE
-SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
-</details>
-
-### Remarks
-
-Source weeded and restructured. However, this library code is not linked into Rootex because it is a Lua library, thus we need the Lua source code to be available in text format to be able to run it inside Rootex. The source is copied into Rootex game exports.
-
-## Narrator
-
-### Code
-
-https://github.com/astrochili/narrator/
-
-### License
-
-<details>
-<summary>MIT License</summary>
-MIT License
-
-Copyright (c) 2020 Roman Silin
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-</details>
-
-### Remarks
-
-Source weeded and restructured. However, this library code is not linked into Rootex because it is a Lua library, thus we need the Lua source code to be available in text format to be able to run it inside Rootex. The source is copied into Rootex game exports.
 
 ## OpenAL-soft
 

@@ -1,7 +1,6 @@
 #pragma once
 
 #include "common/common.h"
-#include "script/interpreter.h"
 #include "event_manager.h"
 
 class Component;
@@ -55,7 +54,6 @@ public:
 	const String& getFullName() const;
 	const HashMap<ComponentID, Component*>& getAllComponents() const;
 
-	void bind(const Event::Type& event, const sol::function& function);
 	bool call(const String& function, const Vector<Variant>& args);
 
 	void draw();

@@ -73,22 +73,6 @@ void OutputDock::draw(float deltaMilliseconds)
 			}
 		}
 
-		static String command;
-		ImGui::SetNextItemWidth(ImGui::GetContentRegionAvailWidth());
-		if (ImGui::InputTextWithHint("##Enter Command", "Command", &command, ImGuiInputTextFlags_EnterReturnsTrue))
-		{
-			try
-			{
-				LuaInterpreter::GetSingleton()->getLuaState().safe_script(command);
-				command = "";
-				ImGui::SetScrollHere(1.0f);
-			}
-			catch (std::exception e)
-			{
-				WARN("Script error. Check console for details.");
-			}
-		}
-
 		if (m_IsOutputJustCaught)
 		{
 			ImGui::SetScrollHere(1.0f);

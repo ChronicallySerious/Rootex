@@ -5,7 +5,6 @@
 #include "core/resource_files/lua_text_resource_file.h"
 
 #include "components/physics/collision_component.h"
-#include "script/script.h"
 
 #include "os/timer.h"
 #include "render_system.h"

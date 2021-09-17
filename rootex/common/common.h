@@ -2,7 +2,6 @@
 
 #include "common/types.h"
 #include "os/os.h"
-#include "script/interpreter.h"
 
 /// Logs function, message in white color
 #define PRINT(m_Msg)                                      \

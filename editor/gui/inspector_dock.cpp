@@ -3,7 +3,6 @@
 #include "entity.h"
 #include "framework/scene_loader.h"
 #include "framework/component.h"
-#include "script/script.h"
 #include "editor/editor_system.h"
 #include "utility/imgui_helpers.h"
 
@@ -152,7 +151,7 @@ void InspectorDock::draw(float deltaMilliseconds)
 			if (m_OpenedScene)
 			{
 				String addition;
-				if (m_OpenedScene->getImportStyle() == Scene::ImportStyle::External)
+				if (m_OpenedScene->isImported())
 				{
 					addition = ICON_ROOTEX_EXTERNAL_LINK;
 					ImGui::PushStyleColor(ImGuiCol_Header, (ImVec4)EditorSystem::GetSingleton()->getLinkColor());
@@ -180,7 +179,7 @@ void InspectorDock::draw(float deltaMilliseconds)
 					}
 					EditorSystem::GetSingleton()->popFont();
 
-					if (m_OpenedScene->getImportStyle() == Scene::ImportStyle::External)
+					if (m_OpenedScene->isImported())
 					{
 						ImGui::TextColored(EditorSystem::GetSingleton()->getLinkColor(), "%s", ("Imported from " + m_OpenedScene->getScenePath()).c_str());
 					}
@@ -237,7 +236,7 @@ void InspectorDock::draw(float deltaMilliseconds)
 				}
 				EditorSystem::GetSingleton()->popFont();
 
-				if (m_OpenedScene->getImportStyle() == Scene::ImportStyle::External)
+				if (m_OpenedScene->isImported())
 				{
 					ImGui::PopStyleColor();
 				}

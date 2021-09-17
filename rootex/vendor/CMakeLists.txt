@@ -16,8 +16,6 @@ set(ROOTEX_SOURCES
     ${VendorSources}
 CACHE INTERNAL "")
 
-add_subdirectory(Lua)
-add_subdirectory(Sol3)
 add_subdirectory(Bullet3D)
 add_subdirectory(OpenALSoft)
 add_subdirectory(DirectXTK)
@@ -32,7 +30,6 @@ add_subdirectory(Rlottie)
 add_subdirectory(RmlUi)
 add_subdirectory(Tracy)
 add_subdirectory(ASSAO)
-add_subdirectory(LPeg)
 add_subdirectory(alut)
 add_subdirectory(Meshoptimizer)
 add_subdirectory(Effekseer)

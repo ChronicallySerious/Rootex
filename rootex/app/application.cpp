@@ -5,7 +5,6 @@
 #include "core/resource_loader.h"
 #include "core/resource_files/lua_text_resource_file.h"
 #include "core/input/input_manager.h"
-#include "script/interpreter.h"
 
 #include "systems/audio_system.h"
 #include "systems/physics_system.h"
@@ -15,7 +14,6 @@
 #include "systems/render_system.h"
 #include "systems/particle_system.h"
 #include "systems/post_process_system.h"
-#include "systems/script_system.h"
 #include "systems/transform_animation_system.h"
 #include "systems/trigger_system.h"
 #include "systems/player_system.h"
@@ -72,7 +70,6 @@ Application::Application(const String& appTitle, const String& settingsFile)
 	ECSFactory::Initialize();
 
 	JSON::json& systemsSettings = m_ApplicationSettings->getJSON()["systems"];
-	LuaInterpreter::GetSingleton();
 
 	JSON::json windowJSON = m_ApplicationSettings->getJSON()["window"];
 	m_Window.reset(new Window(
@@ -106,27 +103,12 @@ Application::Application(const String& appTitle, const String& settingsFile)
 	TransformAnimationSystem::GetSingleton();
 	AnimationSystem::GetSingleton();
 
-	ScriptSystem::GetSingleton();
-
 	if (!AudioSystem::GetSingleton()->initialize(systemsSettings["AudioSystem"]))
 	{
 		ERR("Audio System was not initialized");
 	}
 
 	PlayerSystem::GetSingleton();
-
-	auto&& postInitialize = m_ApplicationSettings->find("postInitialize");
-	if (postInitialize != m_ApplicationSettings->end())
-	{
-		try
-		{
-			LuaInterpreter::GetSingleton()->getLuaState().script_file(*postInitialize);
-		}
-		catch (std::exception e)
-		{
-			ERR("Error during post initialization: " + e.what());
-		}
-	}
 
 	m_Window->show();
 }

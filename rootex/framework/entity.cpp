@@ -4,7 +4,6 @@
 #include "framework/ecs_factory.h"
 #include "framework/component.h"
 #include "framework/system.h"
-#include "framework/systems/script_system.h"
 #include "resource_loader.h"
 
 Entity::Entity(Scene* scene)
@@ -117,11 +116,6 @@ bool Entity::hasComponent(ComponentID componentID)
 const HashMap<ComponentID, Component*>& Entity::getAllComponents() const
 {
 	return m_Components;
-}
-
-void Entity::bind(const Event::Type& event, const sol::function& function)
-{
-	m_Binder.bind(event, [this, function](const Event* e) -> Variant { return function.call<Variant>(); });
 }
 
 bool Entity::call(const String& function, const Vector<Variant>& args)

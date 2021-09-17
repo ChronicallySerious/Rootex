@@ -1,8 +1,7 @@
 #pragma once
 
 #include "common/common.h"
-#include "script/interpreter.h"
-#include "components/component_ids.h"
+#include "component_ids.h"
 #include "ecs_factory.h"
 
 class Component;
@@ -111,6 +110,7 @@ protected:
 		static inline const String General = "General";
 		static inline const String Audio = "Audio";
 		static inline const String Game = "Game";
+		static inline const String Script = "Script";
 		static inline const String Physics = "Physics";
 		static inline const String Model = "Model";
 		static inline const String Effect = "Effect";

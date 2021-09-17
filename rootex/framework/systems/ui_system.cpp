@@ -7,7 +7,6 @@
 #undef interface
 #include "RmlUi/Core.h"
 #include "RmlUi/Debugger.h"
-#include "RmlUi/Lua.h"
 #include "LottiePlugin.h"
 #define interface __STRUCT__
 
@@ -114,7 +113,6 @@ bool UISystem::initialize(const JSON::json& systemData)
 	m_FlipbookInstancer.reset(new FlipbookDecoratorInstancer());
 	Rml::Factory::RegisterDecoratorInstancer("flipbook", m_FlipbookInstancer.get());
 
-	Rml::Lua::Initialise(LuaInterpreter::GetSingleton()->getLuaState().lua_state());
 	Rml::Lottie::Initialise();
 
 	loadFont("rootex/assets/fonts/Lato-Regular.ttf");

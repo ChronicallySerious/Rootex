@@ -122,7 +122,7 @@
                         "overrideBoundingBox": false,
                         "passDown": 7,
                         "position": {
-                            "x": -2.803142547607422,
+                            "x": 8.069620132446289,
                             "y": 1.3999991416931152,
                             "z": -16.664287567138672
                         },
@@ -140,7 +140,6 @@
                     }
                 }
             },
-            "importStyle": 0,
             "name": "SonicCapsule",
             "sceneFile": "",
             "settings": {
@@ -244,7 +243,6 @@
                     }
                 }
             },
-            "importStyle": 0,
             "name": "Office",
             "sceneFile": "",
             "settings": {
@@ -296,20 +294,19 @@
                             "z": 0.0
                         },
                         "rotation": {
-                            "w": -0.4003826975822449,
-                            "x": 0.7990132570266724,
-                            "y": -0.44669854640960693,
-                            "z": -0.041616566479206085
+                            "w": -0.32722845673561096,
+                            "x": 0.7245569229125977,
+                            "y": -0.5181884765625,
+                            "z": 0.3153086006641388
                         },
                         "scale": {
-                            "x": 1.000014066696167,
-                            "y": 23.99987030029297,
-                            "z": 1.000013828277588
+                            "x": 1.000016689300537,
+                            "y": 23.999841690063477,
+                            "z": 1.0000115633010864
                         }
                     }
                 }
             },
-            "importStyle": 0,
             "name": "Light",
             "sceneFile": "",
             "settings": {
@@ -420,7 +417,6 @@
                     }
                 }
             },
-            "importStyle": 0,
             "name": "player",
             "sceneFile": "",
             "settings": {
@@ -525,7 +521,6 @@
                     }
                 }
             },
-            "importStyle": 0,
             "name": "Camera",
             "sceneFile": "",
             "settings": {
@@ -641,7 +636,6 @@
             }
         }
     },
-    "importStyle": 0,
     "name": "mesh_collision",
     "sceneFile": "game/assets/scenes/mesh_collision.scene.json",
     "settings": {

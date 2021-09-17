@@ -1,7 +1,6 @@
 #pragma once
 
 #include "core/event_manager.h"
-#include "script/interpreter.h"
 #include "framework/system.h"
 #include "utility/imgui_helpers.h"
 
@@ -65,8 +64,6 @@ class EditorSystem : public System
 
 	void drawDefaultUI(float deltaMilliseconds);
 	void drawProgressBar(Atomic<int>& progress, float& currentProgress, int& totalProgress);
-
-	void showDocumentation(const String& name, const sol::table& table);
 
 	Variant saveAll(const Event* event);
 	Variant autoSave(const Event* event);

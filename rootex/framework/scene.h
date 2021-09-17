@@ -26,22 +26,11 @@ void from_json(const JSON::json& j, SceneSettings& s);
 
 class Scene
 {
-public:
-	enum class ImportStyle
-	{
-		/// If scene is not imported but created raw inside this scene
-		Local,
-		/// If scene is linked to another scene file
-		External
-	};
-
-private:
 	static Vector<Scene*> s_Scenes;
 
 	SceneID m_ID;
 	String m_Name;
 	String m_FullName;
-	ImportStyle m_ImportStyle;
 	/// Contains the current file name if local, else contains the linked scene file
 	String m_SceneFile;
 	SceneSettings m_Settings;
@@ -65,7 +54,7 @@ public:
 	static Scene* FindSceneByID(const SceneID& id);
 	static const Vector<Scene*>& FindAllScenes();
 
-	Scene(SceneID id, const String& name, const SceneSettings& settings, ImportStyle importStyle, const String& sceneFile);
+	Scene(SceneID id, const String& name, const SceneSettings& settings, const String& sceneFile);
 	~Scene();
 
 	Scene* findScene(SceneID scene);
@@ -81,11 +70,11 @@ public:
 	JSON::json getJSON() const;
 	Vector<Ptr<Scene>>& getChildren() { return m_ChildrenScenes; }
 	SceneID getID() const { return m_ID; }
-	ImportStyle getImportStyle() const { return m_ImportStyle; }
 	String getScenePath() const { return m_SceneFile; }
 	Scene* getParent() const { return m_ParentScene; }
 	Entity& getEntity() { return m_Entity; }
 	const String& getName() const { return m_Name; }
 	const String& getFullName() const { return m_FullName; }
 	SceneSettings& getSettings() { return m_Settings; }
+	bool isImported() const { return !m_SceneFile.empty(); }
 };

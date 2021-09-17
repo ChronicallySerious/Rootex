@@ -20,7 +20,7 @@ void SceneDock::showSceneTree(Ptr<Scene>& scene)
 	uniqueID++;
 	if (scene)
 	{
-		if (scene->getImportStyle() == Scene::ImportStyle::External)
+		if (scene->isImported())
 		{
 			ImGui::PushStyleColor(ImGuiCol_Header, (const ImVec4&)EditorSystem::GetSingleton()->getLinkColor());
 			ImGui::PushStyleColor(ImGuiCol_HeaderActive, (const ImVec4&)EditorSystem::GetSingleton()->getLinkColor());
